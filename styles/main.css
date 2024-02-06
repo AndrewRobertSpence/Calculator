@@ -1,0 +1,27 @@
+@import "styles/_variables.css";
+
+body {
+  background-color: blue;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#calculator {
+  display: flex;
+  flex-direction: column;
+  background-color: pink;
+}
+
+.calculator--row {
+  display: flex;
+  flex-direction: row;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
