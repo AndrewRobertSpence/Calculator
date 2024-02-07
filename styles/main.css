@@ -1,49 +1,59 @@
 @import "_variables.css";
 
 body {
-  background-color: var(--beige);
-  justify-content: center;
+  background: var(--background);
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
-
+h1 {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 12px;
+  margin-top: 30px;
+  padding: 10px;
+  background-color: var(--white);
+}
 #calculator {
   display: flex;
   flex-direction: column;
   background-color: var(--black);
   margin: 0 auto;
-  padding-bottom: 50px;
+  margin-top: 30px;
   padding-top: 10px;
   padding-left: 7px;
   padding-right: 7px;
   gap: var(--largegap);
+  border-radius: 12px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 12px;
+  border-color: white;
 }
-
 p {
   font-size: 60px;
   text-align: right;
   padding: 0;
   margin: 0;
-  font-family: 'DM Sans', sans-serif;
-  /* font-family: "Roboto", sans-serif; */
+  font-family: "DM Sans", sans-serif;
   font-weight: 100;
   background-color: var(--black);
   color: var(--white);
 }
-
 .calculator__row {
   display: flex;
   flex-direction: row;
   gap: var(--gap);
 }
-
 .calculator__last__row {
   display: flex;
   flex-direction: row;
   gap: var(--gap);
 }
-
 .button__lightgrey {
   width: 55px;
   height: 55px;
@@ -55,16 +65,13 @@ p {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  font-family: 'DM Sans', sans-serif;
-  /* font-family: "Roboto", sans-serif; */
+  font-family: "DM Sans", sans-serif;
   font-weight: 700;
   font-size: 20px;
-
 }
-
 .button__darkgrey {
-    width: 55px;
-    height: 55px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   background-color: var(--darkgrey);
   text-align: center;
@@ -73,16 +80,14 @@ p {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  font-family: 'DM Sans', sans-serif;
-  /* font-family: "Roboto", sans-serif; */
+  font-family: "DM Sans", sans-serif;
   font-weight: 400;
   color: white;
   font-size: 24px;
 }
-
 .button__orange {
-    width: 55px;
-    height: 55px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   background-color: var(--orange);
   text-align: center;
@@ -91,8 +96,7 @@ p {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  font-family: 'DM Sans', sans-serif;
-  /* font-family: "Roboto", sans-serif; */
+  font-family: "DM Sans", sans-serif;
   font-weight: 300;
   color: white;
   font-size: 28px;
@@ -101,9 +105,9 @@ button:hover,
 .button__lightgrey:hover,
 .button__darkgrey:hover,
 .button__orange:hover {
-    background-color: var(--mediumgrey);
-    transition: ease-in-out;
-    transition-duration: 0.35s;
+  background-color: var(--mediumgrey);
+  transition: ease-in-out;
+  transition-duration: 0.35s;
 }
 button {
   width: 117px;
@@ -112,9 +116,75 @@ button {
   padding-left: 20px;
   border: none;
   background-color: var(--darkgrey);
-  font-family: 'DM Sans', sans-serif;
-  /* font-family: "Roboto", sans-serif; */
+  font-family: "DM Sans", sans-serif;
   font-weight: 300;
   color: white;
   font-size: 24px;
 }
+hr {
+  width: 30%;
+  border-radius: 10px;
+  height: 2px;
+  margin-top: 30px;
+  background-color: var(--verylightgrey);
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  p {
+    font-size: 80px;
+  }
+  #calculator{
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .button__lightgrey,
+  .button__darkgrey,
+  .button__orange {
+    width: 85px;
+    height: 85px;
+    font-size: 32px;
+  }
+  button {
+    width: 177px;
+    padding-left: 36px;
+    font-size: 32px;
+  }
+  hr {
+    height: 3px;
+    margin-top: 50px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+    p {
+      font-size: 90px;
+    }
+    h1 {
+        margin-top: 10px;
+    }
+    #calculator{
+      padding-top: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-top: 20px;
+    }
+    .button__lightgrey,
+    .button__darkgrey,
+    .button__orange {
+      width: 100px;
+      height: 100px;
+      font-size: 40px;
+    }
+    button {
+      width: 207px;
+      padding-left: 42px;
+      font-size: 40px;
+      border-radius: 68px;
+    }
+    hr {
+      height: 4px;
+      margin-top: 60px;
+    }
+  }

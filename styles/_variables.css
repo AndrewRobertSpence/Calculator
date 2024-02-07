@@ -1,11 +1,18 @@
 :root {
-    --beige: rgb(197, 197, 177);
-    --white: #fff;
-    --orange: #f79a0a;
-    --black: black; 
-    --lightgrey: #a5a5a5;
-    --mediumgrey: #666666;
-    --darkgrey:#333333;
-    --largegap: 10px;
-    --gap: 7px;
-    }
+  --beige: rgb(197, 197, 177);
+  --white: #fff;
+  --orange: #f79a0a;
+  --black: black;
+  --verylightgrey: rgb(207, 207, 207);
+  --lightgrey: #a5a5a5;
+  --mediumgrey: #666666;
+  --darkgrey: #333333;
+  --largegap: 10px;
+  --gap: 7px;
+  --background: radial-gradient(
+    circle,
+    rgba(128, 125, 81, 1) 0%,
+    rgba(140, 137, 95, 1) 25%,
+    rgba(205, 204, 168, 1) 100%
+  );
+}
