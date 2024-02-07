@@ -1,7 +1,7 @@
-@import "styles/_variables.css";
+@import "_variables.css";
 
 body {
-  background-color: blue;
+  background-color: rgb(8, 48, 0);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -11,17 +11,96 @@ body {
 #calculator {
   display: flex;
   flex-direction: column;
-  background-color: pink;
+  background-color: black;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  gap: var(--gap);
 }
 
-.calculator--row {
+p {
+  font-size: 42px;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: black;
+}
+
+.calculator__row {
   display: flex;
   flex-direction: row;
+  gap: var(--gap);
 }
 
-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+.calculator__last__row {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gap);
+}
+
+.button__lightgrey {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #a5a5a5;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+.button__darkgrey {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #333333;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: white;
+}
+
+.button__orange {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #f79a0a;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: white;
+}
+
+button {
+  width: 75px;
+  border-radius: 24px;
+  text-align: left;
+  padding-left: 14px;
+  border: none;
+  background-color: #333333;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: white;
+  font-size: 16px;
 }

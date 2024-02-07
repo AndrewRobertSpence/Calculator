@@ -1,6 +1,8 @@
 :root {
     --white: #fff;
-    --beige: #dabea5;
-    --black: black;  
-    --grey: rgb(26, 26, 26);
+    --orange: #dabea5;
+    --black: black; 
+    --lightgrey: #a5a5a5;
+    --darkgrey:#333333;
+    --gap: 5px;
     }
