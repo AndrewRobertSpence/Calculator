@@ -1,8 +1,11 @@
 :root {
+    --beige: rgb(197, 197, 177);
     --white: #fff;
-    --orange: #dabea5;
+    --orange: #f79a0a;
     --black: black; 
     --lightgrey: #a5a5a5;
+    --mediumgrey: #666666;
     --darkgrey:#333333;
-    --gap: 5px;
+    --largegap: 10px;
+    --gap: 7px;
     }

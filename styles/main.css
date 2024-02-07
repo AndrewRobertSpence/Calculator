@@ -1,7 +1,7 @@
 @import "_variables.css";
 
 body {
-  background-color: rgb(8, 48, 0);
+  background-color: var(--beige);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -11,23 +11,25 @@ body {
 #calculator {
   display: flex;
   flex-direction: column;
-  background-color: black;
+  background-color: var(--black);
   margin: 0 auto;
-  padding-bottom: 40px;
+  padding-bottom: 50px;
   padding-top: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
-  gap: var(--gap);
+  padding-left: 7px;
+  padding-right: 7px;
+  gap: var(--largegap);
 }
 
 p {
-  font-size: 42px;
+  font-size: 60px;
   text-align: right;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  background-color: black;
+  font-family: 'DM Sans', sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+  font-weight: 100;
+  background-color: var(--black);
+  color: var(--white);
 }
 
 .calculator__row {
@@ -43,64 +45,76 @@ p {
 }
 
 .button__lightgrey {
-  width: 35px;
-  height: 35px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
-  background-color: #a5a5a5;
+  background-color: var(--lightgrey);
   text-align: center;
-  transition: transform 0.3s ease;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-family: 'DM Sans', sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+  font-weight: 700;
+  font-size: 20px;
+
 }
 
 .button__darkgrey {
-  width: 35px;
-  height: 35px;
+    width: 55px;
+    height: 55px;
   border-radius: 50%;
-  background-color: #333333;
+  background-color: var(--darkgrey);
   text-align: center;
-  transition: transform 0.3s ease;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
+  font-family: 'DM Sans', sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+  font-weight: 400;
   color: white;
+  font-size: 24px;
 }
 
 .button__orange {
-  width: 35px;
-  height: 35px;
+    width: 55px;
+    height: 55px;
   border-radius: 50%;
-  background-color: #f79a0a;
+  background-color: var(--orange);
   text-align: center;
-  transition: transform 0.3s ease;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  color: white;
-}
-
-button {
-  width: 75px;
-  border-radius: 24px;
-  text-align: left;
-  padding-left: 14px;
-  border: none;
-  background-color: #333333;
-  font-family: "Roboto", sans-serif;
+  font-family: 'DM Sans', sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   font-weight: 300;
   color: white;
-  font-size: 16px;
+  font-size: 28px;
+}
+button:hover,
+.button__lightgrey:hover,
+.button__darkgrey:hover,
+.button__orange:hover {
+    background-color: var(--mediumgrey);
+    transition: ease-in-out;
+    transition-duration: 0.35s;
+}
+button {
+  width: 117px;
+  border-radius: 42px;
+  text-align: left;
+  padding-left: 20px;
+  border: none;
+  background-color: var(--darkgrey);
+  font-family: 'DM Sans', sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+  font-weight: 300;
+  color: white;
+  font-size: 24px;
 }
