@@ -33,8 +33,8 @@ h1 {
   border-width: 2px;
   border-radius: 12px;
   border-color: white;
-}
-p {
+} 
+#calculator__display {
   font-size: 60px;
   text-align: right;
   padding: 0;
@@ -54,7 +54,10 @@ p {
   flex-direction: row;
   gap: var(--gap);
 }
-.button__lightgrey {
+
+.button__lightgrey,
+.button__darkgrey,
+.button__orange {
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -66,40 +69,23 @@ p {
   justify-content: center;
   margin: 0 auto;
   font-family: "DM Sans", sans-serif;
+}
+.button__lightgrey {
   font-weight: 700;
   font-size: 20px;
+  background-color: var(--lightgrey);
 }
 .button__darkgrey {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background-color: var(--darkgrey);
-  text-align: center;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  font-family: "DM Sans", sans-serif;
   font-weight: 400;
   color: white;
   font-size: 24px;
+  background-color: var(--darkgrey);
 }
 .button__orange {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background-color: var(--orange);
-  text-align: center;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  font-family: "DM Sans", sans-serif;
   font-weight: 300;
   color: white;
   font-size: 28px;
+  background-color: var(--orange);
 }
 button:hover,
 .button__lightgrey:hover,
@@ -131,10 +117,10 @@ hr {
 }
 
 @media screen and (min-width: 768px) {
-  p {
+  #calculator__display {
     font-size: 80px;
   }
-  #calculator{
+  #calculator {
     padding-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
@@ -158,33 +144,33 @@ hr {
 }
 
 @media screen and (min-width: 1440px) {
-    p {
-      font-size: 90px;
-    }
-    h1 {
-        margin-top: 10px;
-    }
-    #calculator{
-      padding-top: 20px;
-      padding-left: 10px;
-      padding-right: 10px;
-      margin-top: 10px;
-    }
-    .button__lightgrey,
-    .button__darkgrey,
-    .button__orange {
-      width: 100px;
-      height: 100px;
-      font-size: 40px;
-    }
-    button {
-      width: 207px;
-      padding-left: 42px;
-      font-size: 40px;
-      border-radius: 68px;
-    }
-    hr {
-      height: 4px;
-      margin-top: 65px;
-    }
+  #calculator__display {
+    font-size: 100px;
   }
+  h1 {
+    margin-top: 10px;
+  }
+  #calculator {
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+  }
+  .button__lightgrey,
+  .button__darkgrey,
+  .button__orange {
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+  }
+  button {
+    width: 207px;
+    padding-left: 42px;
+    font-size: 40px;
+    border-radius: 68px;
+  }
+  hr {
+    height: 4px;
+    margin-top: 65px;
+  }
+}
