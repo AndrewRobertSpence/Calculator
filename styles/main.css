@@ -18,8 +18,7 @@ h1 {
   padding: 10px;
   background-color: var(--white);
 }
-#calculator__back,
-#calculator__front {
+#calculator__back {
   display: flex;
   flex-direction: column;
   background-color: var(--black);
@@ -36,13 +35,7 @@ h1 {
   border-color: white;
 }
 #calculator__front {
-  color: white;
-  font-family: "DM Sans", sans-serif;
-  font-weight: 100;
-  width: 240px;
-}
-#calculator__back {
-  transform: rotateY(180deg);
+ display: none;
 }
 #calculator__display {
   font-size: 60px;
@@ -125,29 +118,7 @@ hr {
   background-color: var(--verylightgrey);
   border: none;
 }
-.flip-card {
-  background-color: transparent;
-  perspective: 1000px;
-}
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-.flip-card-front,
-.flip-card-back {
-  /* position: absolute; */
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
+
 @media screen and (min-width: 768px) {
   #calculator__display {
     font-size: 80px;
@@ -173,6 +144,59 @@ hr {
   hr {
     height: 3px;
     margin-top: 50px;
+  }
+  #calculator__back,
+  #calculator__front {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--black);
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    gap: var(--largegap);
+    border-radius: 12px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 12px;
+    border-color: white;
+  }
+  #calculator__front {
+    color: white;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 100;
+    width: 234px;
+  }
+  .flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front,
+  .flip-card-back {
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .flip-card:hover .flip-card-front {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .flip-card-back {
+    transform: rotateY(180deg);
   }
 }
 
