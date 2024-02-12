@@ -52,15 +52,15 @@ h1 {
   flex-direction: row;
   gap: var(--gap);
 }
-.calculator__last__row {
+.calculator__back__last__row {
   display: flex;
   flex-direction: row;
   gap: var(--gap);
 }
 
-.button__lightgrey,
-.button__darkgrey,
-.button__orange {
+.calculator__back__button__lightgrey,
+.calculator__back__button__darkgrey,
+.calculator__back__button__orange {
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -73,27 +73,27 @@ h1 {
   margin: 0 auto;
   font-family: "DM Sans", sans-serif;
 }
-.button__lightgrey {
+.calculator__back__button__lightgrey {
   font-weight: 700;
   font-size: 20px;
   background-color: var(--lightgrey);
 }
-.button__darkgrey {
+.calculator__back__button__darkgrey {
   font-weight: 400;
   color: white;
   font-size: 24px;
   background-color: var(--darkgrey);
 }
-.button__orange {
+.calculator__back__button__orange {
   font-weight: 300;
   color: white;
   font-size: 28px;
   background-color: var(--orange);
 }
 button:hover,
-.button__lightgrey:hover,
-.button__darkgrey:hover,
-.button__orange:hover {
+.calculator__back__button__lightgrey:hover,
+.calculator__back__button__darkgrey:hover,
+.calculator__back__button__orange:hover {
   background-color: var(--mediumgrey);
   transition: ease-in-out;
   transition-duration: 0.35s;
@@ -128,9 +128,9 @@ hr {
     padding-left: 10px;
     padding-right: 10px;
   }
-  .button__lightgrey,
-  .button__darkgrey,
-  .button__orange {
+  .calculator__back__button__lightgrey,
+  .calculator__back__button__darkgrey,
+  .calculator__back__button__orange {
     width: 85px;
     height: 85px;
     font-size: 32px;
@@ -225,14 +225,14 @@ hr {
     padding-right: 10px;
     margin-top: 10px;
   }
-  .button__lightgrey,
-  .button__darkgrey,
-  .button__orange {
+  .calculator__back__button__lightgrey,
+  .calculator__back__button__darkgrey,
+  .calculator__back__button__orange {
     width: 100px;
     height: 100px;
     font-size: 40px;
   }
-  .button__orange {
+  .calculator__back__button__orange {
     font-size: 50px;
   }
   button {
