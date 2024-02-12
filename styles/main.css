@@ -37,7 +37,7 @@ h1 {
 #calculator__front {
  display: none;
 }
-#calculator__display {
+#calculator__back__display {
   font-size: 60px;
   text-align: right;
   padding: 0;
@@ -47,7 +47,7 @@ h1 {
   background-color: var(--black);
   color: var(--white);
 }
-.calculator__row {
+.calculator__back__row {
   display: flex;
   flex-direction: row;
   gap: var(--gap);
@@ -120,7 +120,7 @@ hr {
 }
 
 @media screen and (min-width: 768px) {
-  #calculator__display {
+  /* #calculator__back__display {
     font-size: 80px;
   }
   #calculator {
@@ -135,14 +135,13 @@ hr {
     height: 85px;
     font-size: 32px;
   }
-
   button {
     width: 177px;
     padding-left: 36px;
     font-size: 32px;
-  }
+  } */
   hr {
-    height: 3px;
+    /* height: 3px; */
     margin-top: 50px;
   }
   #calculator__back,
@@ -166,7 +165,15 @@ hr {
     color: white;
     font-family: "DM Sans", sans-serif;
     font-weight: 100;
-    width: 234px;
+    width: 230px;
+    height: 475px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  h2 {
+    width: 200px;
+    padding-bottom: 16px
   }
   .flip-card {
     background-color: transparent;
@@ -201,11 +208,16 @@ hr {
 }
 
 @media screen and (min-width: 1440px) {
-  #calculator__display {
+  #calculator__back__display {
     font-size: 100px;
   }
   h1 {
     margin-top: 10px;
+  }
+  h2 {
+    width: 340px;
+    padding-bottom: 43px;
+    font-size: 42px;
   }
   #calculator {
     padding-top: 20px;
@@ -232,5 +244,15 @@ hr {
   hr {
     height: 4px;
     margin-top: 65px;
+  }
+  #calculator__front {
+    color: white;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 100;
+    width: 431px;
+    height: 767px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
   }
 }
