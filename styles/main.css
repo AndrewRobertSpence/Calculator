@@ -46,6 +46,8 @@ h1 {
   font-weight: 100;
   background-color: var(--black);
   color: var(--white);
+  width: 241px;
+  border: none;
 }
 .calculator__back__row {
   display: flex;
@@ -72,22 +74,26 @@ h1 {
   justify-content: center;
   margin: 0 auto;
   font-family: "DM Sans", sans-serif;
+  border: none;
 }
 .calculator__back__button__lightgrey {
   font-weight: 700;
   font-size: 20px;
+  margin: 0 auto;
   background-color: var(--lightgrey);
 }
 .calculator__back__button__darkgrey {
   font-weight: 400;
   color: white;
   font-size: 24px;
+  margin: 0 auto;
   background-color: var(--darkgrey);
 }
 .calculator__back__button__orange {
   font-weight: 300;
   color: white;
   font-size: 28px;
+  margin: 0 auto;
   background-color: var(--orange);
 }
 button:hover,
@@ -210,6 +216,7 @@ hr {
 @media screen and (min-width: 1440px) {
   #calculator__back__display {
     font-size: 100px;
+    width: 421px;
   }
   h1 {
     margin-top: 10px;
