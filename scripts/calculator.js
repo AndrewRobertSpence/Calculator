@@ -1,13 +1,26 @@
 let currentNumber = "";
 let currentOperator = "";
+let decimalAdded = false;
 
 function display(input) {
   const displayElement = document.getElementById("calculator__back__display");
 
   if (["+", "-", "*", "÷"].includes(input)) {
-    { currentOperator = input;
+    if (currentNumber === "") {
+      displayElement.value = "";
+      return;
+    }
+    if (currentOperator !== "" && displayElement.value !== "") {
+      calculate();
+      currentOperator = input;
       currentNumber = displayElement.value;
       displayElement.value = "";
+      decimalAdded = false;
+    } else {
+      currentOperator = input;
+      currentNumber = displayElement.value;
+      displayElement.value = "";
+      decimalAdded = false;
     }
   } else {
     if (input === "%") {
@@ -19,6 +32,34 @@ function display(input) {
         displayElement.value = currentNumber;
       }
       return;
+    }
+    if (input === ".") {
+      if (decimalAdded) {
+        return;
+      }
+      if (currentNumber === "" || isNaN(parseFloat(currentNumber))) {
+        displayElement.value = "0.";
+        currentNumber = "0";
+      } else if (currentOperator !== "" && displayElement.value === "") {
+        displayElement.value = "0.";
+      } else {
+        displayElement.value += input;
+      }
+      decimalAdded = true;
+      return;
+    }
+
+    if (displayElement.value === "0" && !isNaN(input)) {
+      displayElement.value = input;
+      currentNumber = input;
+      return;
+    }
+    if (currentNumber === "0" && !decimalAdded && !isNaN(input)) {
+      currentNumber = "";
+    }
+    if (currentNumber === "" && !isNaN(input)) {
+      currentNumber = input;
+      displayElement.value = currentNumber;
     } else {
       displayElement.value += input;
     }
@@ -30,6 +71,7 @@ function clearDisplay() {
   displayElement.value = "";
   currentNumber = "";
   currentOperator = "";
+  decimalAdded = false;
 }
 
 function calculate() {
