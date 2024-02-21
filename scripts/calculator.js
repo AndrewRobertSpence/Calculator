@@ -1,35 +1,45 @@
 let currentNumber = "";
 let currentOperator = "";
 let decimalAdded = false;
+let calculateString = "";
 
 function display(input) {
   const displayElement = document.getElementById("calculator__back__display");
+  console.log("Display function start");
+  const operatorsArr = ["+", "-", "*", "÷"];
 
-  if (["+", "-", "*", "÷"].includes(input)) {
-    if (currentNumber === "") {
-      displayElement.value = "";
-      return;
-    }
-    if (currentOperator !== "" && displayElement.value !== "") {
-      calculate();
+  if (operatorsArr.includes(input) && calculateString === "") {
+    return;
+  }
+  if (operatorsArr.includes(input)) {
+    displayElement.value = "";
+    if (operatorsArr.includes(currentOperator)) {
       currentOperator = input;
-      currentNumber = displayElement.value;
-      displayElement.value = "";
-      decimalAdded = false;
+      if (calculateString.slice(-1).match(/[+\-*/÷]/)) {
+        calculateString = calculateString.slice(0, -1) + input;
+      } else if (currentNumber === "") {
+        return;
+      } else {
+        calculateString += input;
+      }
     } else {
       currentOperator = input;
       currentNumber = displayElement.value;
       displayElement.value = "";
       decimalAdded = false;
+      calculateString += input;
     }
   } else {
     if (input === "%") {
       if (currentOperator !== "") {
         handlePercentage(displayElement);
+        currentNumber = displayElement.value;
         currentOperator = "";
+        calculateString += currentNumber;
       } else {
         currentNumber = (parseFloat(displayElement.value) / 100).toString();
         displayElement.value = currentNumber;
+        calculateString += currentNumber;
       }
       return;
     }
@@ -40,10 +50,13 @@ function display(input) {
       if (currentNumber === "" || isNaN(parseFloat(currentNumber))) {
         displayElement.value = "0.";
         currentNumber = "0";
+        calculateString += input;
       } else if (currentOperator !== "" && displayElement.value === "") {
         displayElement.value = "0.";
+        calculateString += input;
       } else {
         displayElement.value += input;
+        calculateString += input;
       }
       decimalAdded = true;
       return;
@@ -52,16 +65,20 @@ function display(input) {
     if (displayElement.value === "0" && !isNaN(input)) {
       displayElement.value = input;
       currentNumber = input;
+      calculateString += input;
       return;
     }
     if (currentNumber === "0" && !decimalAdded && !isNaN(input)) {
       currentNumber = "";
+      calculateString += input;
     }
     if (currentNumber === "" && !isNaN(input)) {
       currentNumber = input;
       displayElement.value = currentNumber;
+      calculateString += input;
     } else {
       displayElement.value += input;
+      calculateString += input;
     }
   }
 }
@@ -72,50 +89,25 @@ function clearDisplay() {
   currentNumber = "";
   currentOperator = "";
   decimalAdded = false;
+  calculateString = "";
 }
 
 function calculate() {
   const displayElement = document.getElementById("calculator__back__display");
-  let secondNumber = displayElement.value;
   let result;
-
-  switch (currentOperator) {
-    case "+":
-      result = (parseFloat(currentNumber) + parseFloat(secondNumber))
-        .toFixed(8)
-        .replace(/\.?0+$/, "");
-      break;
-    case "-":
-      result = (parseFloat(currentNumber) - parseFloat(secondNumber))
-        .toFixed(8)
-        .replace(/\.?0+$/, "");
-      break;
-    case "*":
-      result = (parseFloat(currentNumber) * parseFloat(secondNumber))
-        .toFixed(8)
-        .replace(/\.?0+$/, "");
-      break;
-    case "÷":
-      result = (parseFloat(currentNumber) / parseFloat(secondNumber))
-        .toFixed(8)
-        .replace(/\.?0+$/, "");
-      break;
-    case "%":
-      result = (
-        parseFloat(currentNumber) *
-        (1 + parseFloat(secondNumber) / 100)
-      )
-        .toFixed(8)
-        .replace(/\.?0+$/, "");
-      break;
-    default:
-      result = parseFloat(secondNumber);
+  console.log("calculation begins");
+  console.log("calculateString :", calculateString);
+  console.log("calculation ends");
+  try {
+    const func = new Function("return " + calculateString);
+    result = func();
+    calculateString = result;
+  } catch (error) {
+    result = "Error";
   }
-
-  displayElement.value = parseFloat(result);
+  displayElement.value = result;
   currentNumber = "";
   currentOperator = "";
-
   return result;
 }
 
@@ -124,11 +116,13 @@ function negativePositive() {
   const currentValue = parseFloat(displayElement.value);
   if (!isNaN(currentValue)) {
     displayElement.value = -currentValue;
+    currentNumber = displayElement.value;
   }
 }
 
 function handlePercentage(displayElement) {
   let currentValue = parseFloat(displayElement.value);
+  console.log("currentValue ", currentValue);
   if (!isNaN(currentValue)) {
     switch (currentOperator) {
       case "+":
