@@ -8,11 +8,6 @@ function display(input) {
   console.log("Display function start");
   const operatorsArr = ["+", "-", "*", "/"];
 
-  if (input === "+/-") {
-    negativePositive();
-    return;
-  }
-
   if (operatorsArr.includes(input) && calculateString === "") {
     return;
   }
@@ -35,6 +30,14 @@ function display(input) {
       calculateString += input;
     }
   } else {
+    if (input === "+/-") {
+      if (currentNumber === "") return;
+      console.log("+/- case");
+      console.log(calculateString);
+      const negInput = negativePositive();
+      displayElement.value = negInput;
+      calculateString = calculateString.replace(/(\d+\.\d+|\d+)$/, negInput);
+    }
     if (input === "%") {
       if (currentNumber === "") {
         return;
@@ -98,7 +101,6 @@ function display(input) {
   }
 }
 
-
 function clearDisplay() {
   const displayElement = document.getElementById("calculator__back__display");
   displayElement.value = "";
@@ -149,6 +151,8 @@ function negativePositive() {
     currentNumber = updatedValue.toString();
   }
 }
+
+
 
 function handlePercentage(displayElement) {
   let currentValue = parseFloat(displayElement.value);
