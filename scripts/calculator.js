@@ -6,7 +6,12 @@ let calculateString = "";
 function display(input) {
   const displayElement = document.getElementById("calculator__back__display");
   console.log("Display function start");
-  const operatorsArr = ["+", "-", "*", "÷"];
+  const operatorsArr = ["+", "-", "*", "/"];
+
+  if (input === "+/-") {
+    negativePositive();
+    return;
+  }
 
   if (operatorsArr.includes(input) && calculateString === "") {
     return;
@@ -15,7 +20,7 @@ function display(input) {
     displayElement.value = "";
     if (operatorsArr.includes(currentOperator)) {
       currentOperator = input;
-      if (calculateString.slice(-1).match(/[+\-*/÷]/)) {
+      if (calculateString.slice(-1).match(/[+\-*/?]/)) {
         calculateString = calculateString.slice(0, -1) + input;
       } else if (currentNumber === "") {
         return;
@@ -31,14 +36,21 @@ function display(input) {
     }
   } else {
     if (input === "%") {
+      if (currentNumber === "") {
+        return;
+      }
       if (currentOperator !== "") {
-        handlePercentage(displayElement);
-        currentNumber = displayElement.value;
+        currentNumber = parseFloat(displayElement.value);
+        let result = handlePercentage(displayElement);
+        console.log("current number", currentNumber);
         currentOperator = "";
-        calculateString += currentNumber;
+        calculateString += result;
+        displayElement.value = result;
       } else {
+        calculateString = "";
         currentNumber = (parseFloat(displayElement.value) / 100).toString();
         displayElement.value = currentNumber;
+        currentOperator = "";
         calculateString += currentNumber;
       }
       return;
@@ -76,12 +88,16 @@ function display(input) {
       currentNumber = input;
       displayElement.value = currentNumber;
       calculateString += input;
+    } else if (input === "+/-") {
+      return;
     } else {
+      console.log("else runs");
       displayElement.value += input;
       calculateString += input;
     }
   }
 }
+
 
 function clearDisplay() {
   const displayElement = document.getElementById("calculator__back__display");
@@ -100,23 +116,37 @@ function calculate() {
   console.log("calculation ends");
   try {
     const func = new Function("return " + calculateString);
-    result = func();
+    result = func()
+      .toFixed(8)
+      .replace(/\.?0+$/, "");
     calculateString = result;
+    console.log("calculateString :", calculateString);
   } catch (error) {
     result = "Error";
   }
   displayElement.value = result;
-  currentNumber = "";
+  currentNumber = calculateString;
   currentOperator = "";
   return result;
 }
 
 function negativePositive() {
   const displayElement = document.getElementById("calculator__back__display");
-  const currentValue = parseFloat(displayElement.value);
+  let currentValue = parseFloat(displayElement.value);
   if (!isNaN(currentValue)) {
-    displayElement.value = -currentValue;
-    currentNumber = displayElement.value;
+    let updatedValue;
+    if (Math.sign(currentValue) === -1) {
+      updatedValue = Math.abs(currentValue);
+    } else {
+      updatedValue = -currentValue;
+    }
+    displayElement.value = updatedValue.toString();
+    if (calculateString.endsWith(currentNumber)) {
+      calculateString = calculateString.slice(0, -currentNumber.length) + updatedValue;
+    } else {
+      calculateString = calculateString.replace(/(-)?\d+(\.\d+)?$/, updatedValue);
+    }
+    currentNumber = updatedValue.toString();
   }
 }
 
@@ -124,33 +154,27 @@ function handlePercentage(displayElement) {
   let currentValue = parseFloat(displayElement.value);
   console.log("currentValue ", currentValue);
   if (!isNaN(currentValue)) {
+    let result;
     switch (currentOperator) {
       case "+":
-        displayElement.value = (
+        result =
           parseFloat(currentNumber) +
-          (parseFloat(currentNumber) * currentValue) / 100
-        ).toString();
+          (parseFloat(currentNumber) * currentValue) / 100;
         break;
       case "-":
-        displayElement.value = (
+        result =
           parseFloat(currentNumber) -
-          (parseFloat(currentNumber) * currentValue) / 100
-        ).toString();
+          (parseFloat(currentNumber) * currentValue) / 100;
         break;
       case "*":
-        displayElement.value = (
-          (parseFloat(currentNumber) * currentValue) /
-          100
-        ).toString();
+        result = parseFloat(currentNumber) * (currentValue / 100);
         break;
-      case "÷":
-        displayElement.value = (
-          (parseFloat(currentNumber) / currentValue) *
-          100
-        ).toString();
+      case "/":
+        result = parseFloat(currentNumber) / (currentValue / 100);
         break;
       default:
-        displayElement.value = (currentValue / 100).toString();
+        result = currentValue / 100;
     }
+    return result.toString();
   }
 }
