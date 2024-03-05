@@ -32,12 +32,24 @@ function display(input) {
   } else {
     if (input === "+/-") {
       if (currentNumber === "") return;
-      console.log("+/- case");
-      console.log(calculateString);
-      const negInput = negativePositive();
-      displayElement.value = negInput;
-      calculateString = calculateString.replace(/(\d+\.\d+|\d+)$/, negInput);
+      let currentValue = parseFloat(displayElement.value);
+      if (!isNaN(currentValue)) {
+        if (currentValue < 0) {
+          currentValue = Math.abs(currentValue);
+          displayElement.value = currentValue;
+          currentNumber = currentValue.toString();
+          calculateString = calculateString.replace("-", "");
+        } else {
+          currentValue = -currentValue;
+          displayElement.value = currentValue;
+          currentNumber = currentValue.toString();
+          calculateString = "-" + calculateString;
+        }
+        console.log(calculateString);
+      }
+      return;
     }
+
     if (input === "%") {
       if (currentNumber === "") {
         return;
@@ -131,28 +143,6 @@ function calculate() {
   currentOperator = "";
   return result;
 }
-
-function negativePositive() {
-  const displayElement = document.getElementById("calculator__back__display");
-  let currentValue = parseFloat(displayElement.value);
-  if (!isNaN(currentValue)) {
-    let updatedValue;
-    if (Math.sign(currentValue) === -1) {
-      updatedValue = Math.abs(currentValue);
-    } else {
-      updatedValue = -currentValue;
-    }
-    displayElement.value = updatedValue.toString();
-    if (calculateString.endsWith(currentNumber)) {
-      calculateString = calculateString.slice(0, -currentNumber.length) + updatedValue;
-    } else {
-      calculateString = calculateString.replace(/(-)?\d+(\.\d+)?$/, updatedValue);
-    }
-    currentNumber = updatedValue.toString();
-  }
-}
-
-
 
 function handlePercentage(displayElement) {
   let currentValue = parseFloat(displayElement.value);
