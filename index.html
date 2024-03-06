@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -33,33 +32,33 @@
           <section id="calculator__back">
             <input id="calculator__back__display" type="text">
             <div class="calculator__back__row">
-              <div value="C" class="calculator__back__button__lightgrey" onclick="clearDisplay()">C</div>
-              <div value="+/-" class="calculator__back__button__lightgrey" id="calculator__back__button__lightgrey" onclick="display('+/-')"><sup>+</sup>/<sub>-</sub></div>
-              <div value="%" class="calculator__back__button__lightgrey" onclick="display('%')">%</div>
-              <div value="/" class="calculator__back__button__orange" onclick="display('/')">÷</div>
+              <div value="C" class="calculator__back__button__lightgrey" onclick="handleClearDisplay()">C</div>
+              <div value="+/-" class="calculator__back__button__lightgrey" id="calculator__back__button__lightgrey" onclick="handleDisplay('+/-')"><sup>+</sup>/<sub>-</sub></div>
+              <div value="%" class="calculator__back__button__lightgrey" onclick="handleDisplay('%')">%</div>
+              <div value="/" class="calculator__back__button__orange" onclick="handleDisplay('/')">÷</div>
             </div>
             <div class="calculator__back__row">
-              <div value="7" class="calculator__back__button__darkgrey" onclick="display('7')">7</div>
-              <div value="8" class="calculator__back__button__darkgrey" onclick="display('8')">8</div>
-              <div value="9" class="calculator__back__button__darkgrey" onclick="display('9')">9</div>
-              <div value="&times;" class="calculator__back__button__orange" onclick="display('*')">&times;</div>
+              <div value="7" class="calculator__back__button__darkgrey" onclick="handleDisplay('7')">7</div>
+              <div value="8" class="calculator__back__button__darkgrey" onclick="handleDisplay('8')">8</div>
+              <div value="9" class="calculator__back__button__darkgrey" onclick="handleDisplay('9')">9</div>
+              <div value="&times;" class="calculator__back__button__orange" onclick="handleDisplay('*')">&times;</div>
             </div>
             <div class="calculator__back__row">
-              <div value="4" class="calculator__back__button__darkgrey" onclick="display('4')">4</div>
-              <div value="5" class="calculator__back__button__darkgrey" onclick="display('5')">5</div>
-              <div value="6" class="calculator__back__button__darkgrey" onclick="display('6')">6</div>
-              <div value="&minus;" class="calculator__back__button__orange" onclick="display('-')">&minus;</div>
+              <div value="4" class="calculator__back__button__darkgrey" onclick="handleDisplay('4')">4</div>
+              <div value="5" class="calculator__back__button__darkgrey" onclick="handleDisplay('5')">5</div>
+              <div value="6" class="calculator__back__button__darkgrey" onclick="handleDisplay('6')">6</div>
+              <div value="&minus;" class="calculator__back__button__orange" onclick="handleDisplay('-')">&minus;</div>
             </div>
             <div class="calculator__back__row">
-              <div value="1" class="calculator__back__button__darkgrey" onclick="display('1')">1</div>
-              <div value="2" class="calculator__back__button__darkgrey" onclick="display('2')">2</div>
-              <div value="3" class="calculator__back__button__darkgrey" onclick="display('3')">3</div>
-              <div value="+" class="calculator__back__button__orange" onclick="display('+')">+</div>
+              <div value="1" class="calculator__back__button__darkgrey" onclick="handleDisplay('1')">1</div>
+              <div value="2" class="calculator__back__button__darkgrey" onclick="handleDisplay('2')">2</div>
+              <div value="3" class="calculator__back__button__darkgrey" onclick="handleDisplay('3')">3</div>
+              <div value="+" class="calculator__back__button__orange" onclick="handleDisplay('+')">+</div>
             </div>
             <div class="calculator__back__last__row">
-              <button value="0" class="calculator__back__button__darkgrey__long" onclick="display('0')">0</button>
-              <div value="." class="calculator__back__button__darkgrey" onclick="display('.')">.</div>
-              <div value="=" class="calculator__back__button__orange" onclick="calculate()">=</div>
+              <button value="0" class="calculator__back__button__darkgrey__long" onclick="handleDisplay('0')">0</button>
+              <div value="." class="calculator__back__button__darkgrey" onclick="handleDisplay('.')">.</div>
+              <div value="=" class="calculator__back__button__orange" onclick="handleCalculate()">=</div>
             </div>
             <hr />
           </section>

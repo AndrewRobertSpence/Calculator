@@ -3,15 +3,19 @@ let currentOperator = "";
 let decimalAdded = false;
 let calculateString = "";
 
-function display(input) {
+function handleDisplay(input) {
   const displayElement = document.getElementById("calculator__back__display");
   console.log("Display function start");
   const operatorsArr = ["+", "-", "*", "/"];
 
-  if (operatorsArr.includes(input) && calculateString === "") {
+  let isInputAnOperator = operatorsArr.includes(input);
+
+  // 1. Guard against an operator press when there's no calculate string
+  if (isInputAnOperator && calculateString === "") {
     return;
   }
-  if (operatorsArr.includes(input)) {
+
+  if (isInputAnOperator) {
     displayElement.value = "";
     if (operatorsArr.includes(currentOperator)) {
       currentOperator = input;
@@ -45,6 +49,7 @@ function display(input) {
           currentNumber = currentValue.toString();
           calculateString = "-" + calculateString;
         }
+
         console.log(calculateString);
       }
       return;
@@ -54,19 +59,20 @@ function display(input) {
       if (currentNumber === "") {
         return;
       }
-      if (currentOperator !== "") {
-        currentNumber = parseFloat(displayElement.value);
-        let result = handlePercentage(displayElement);
-        console.log("current number", currentNumber);
-        currentOperator = "";
-        calculateString += result;
-        displayElement.value = result;
-      } else {
-        calculateString = "";
-        currentNumber = (parseFloat(displayElement.value) / 100).toString();
-        displayElement.value = currentNumber;
-        currentOperator = "";
-        calculateString += currentNumber;
+      let currentValue = parseFloat(displayElement.value);
+      if (!isNaN(currentValue)) {
+        let percentageValue = (parseFloat(currentNumber) / 100) * currentValue;
+        displayElement.value = percentageValue.toString();
+        currentNumber = percentageValue.toString();
+        let lastOperatorIndex = calculateString.search(/[+\-*/]/);
+        if (lastOperatorIndex !== -1) {
+          calculateString =
+            calculateString.substring(0, lastOperatorIndex + 1) +
+            percentageValue;
+        } else {
+          calculateString = percentageValue;
+        }
+        console.log("calculateString:", calculateString);
       }
       return;
     }
@@ -113,7 +119,7 @@ function display(input) {
   }
 }
 
-function clearDisplay() {
+function handleClearDisplay() {
   const displayElement = document.getElementById("calculator__back__display");
   displayElement.value = "";
   currentNumber = "";
@@ -122,12 +128,13 @@ function clearDisplay() {
   calculateString = "";
 }
 
-function calculate() {
+function handleCalculate() {
   const displayElement = document.getElementById("calculator__back__display");
   let result;
   console.log("calculation begins");
   console.log("calculateString :", calculateString);
   console.log("calculation ends");
+
   try {
     const func = new Function("return " + calculateString);
     result = func()
@@ -142,33 +149,4 @@ function calculate() {
   currentNumber = calculateString;
   currentOperator = "";
   return result;
-}
-
-function handlePercentage(displayElement) {
-  let currentValue = parseFloat(displayElement.value);
-  console.log("currentValue ", currentValue);
-  if (!isNaN(currentValue)) {
-    let result;
-    switch (currentOperator) {
-      case "+":
-        result =
-          parseFloat(currentNumber) +
-          (parseFloat(currentNumber) * currentValue) / 100;
-        break;
-      case "-":
-        result =
-          parseFloat(currentNumber) -
-          (parseFloat(currentNumber) * currentValue) / 100;
-        break;
-      case "*":
-        result = parseFloat(currentNumber) * (currentValue / 100);
-        break;
-      case "/":
-        result = parseFloat(currentNumber) / (currentValue / 100);
-        break;
-      default:
-        result = currentValue / 100;
-    }
-    return result.toString();
-  }
 }
