@@ -49,7 +49,6 @@ function handleDisplay(input) {
           currentNumber = currentValue.toString();
           calculateString = "-" + calculateString;
         }
-
         console.log(calculateString);
       }
       return;
